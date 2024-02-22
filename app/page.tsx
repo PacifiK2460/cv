@@ -1,51 +1,63 @@
+'use client';
+
 import { Link } from "@nextui-org/link";
-import { Snippet } from "@nextui-org/snippet";
-import { Code } from "@nextui-org/code"
+import { Code } from "@nextui-org/code";
 import { button as buttonStyles } from "@nextui-org/theme";
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
 
+import {Card, CardBody, Image, Button, Slider} from "@nextui-org/react";
+import {Snippet} from "@nextui-org/react";
+
+import { EnvelopeIcon } from "@heroicons/react/24/outline";
+import { Toaster, toast } from 'sonner'
+
+
 export default function Home() {
-	return (
-		<section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-			<div className="inline-block max-w-lg text-center justify-center">
-				<h1 className={title()}>Make&nbsp;</h1>
-				<h1 className={title({ color: "violet" })}>beautiful&nbsp;</h1>
-				<br />
-				<h1 className={title()}>
-					websites regardless of your design experience.
-				</h1>
-				<h2 className={subtitle({ class: "mt-4" })}>
-					Beautiful, fast and modern React UI library.
-				</h2>
-			</div>
+  return (
+    <div class="h-full">
+      <Toaster position="bottom-right"/>
+      <div className="grid h-full place-items-center">
+      <Card
+      isBlurred
+      shadow="sm"
+      >
 
-			<div className="flex gap-3">
-				<Link
-					isExternal
-					href={siteConfig.links.docs}
-					className={buttonStyles({ color: "primary", radius: "full", variant: "shadow" })}
-				>
-					Documentation
-				</Link>
-				<Link
-					isExternal
-					className={buttonStyles({ variant: "bordered", radius: "full" })}
-					href={siteConfig.links.github}
-				>
-					<GithubIcon size={20} />
-					GitHub
-				</Link>
-			</div>
+        <CardBody>
 
-			<div className="mt-8">
-				<Snippet hideSymbol hideCopyButton variant="flat">
-					<span>
-						Get started by editing <Code color="primary">app/page.tsx</Code>
-					</span>
-				</Snippet>
-			</div>
-		</section>
-	);
+          <h1 className={title()}>Bajo Construcción</h1>
+          <br />
+          <h2 className={title()}>
+          Vuelve pronto para contemplar todo mi trabajo.
+          </h2>
+          <h3 className={subtitle({ class: "mt-4 italic" })}>
+          Martinez Lara Santiago de la cruz.
+          </h3>
+          <Snippet
+            variant="bordered"
+            tooltipProps={{
+            color: "foreground",
+            content: "Copiar mi dirección de correo electronico",
+            // disableAnimation: true,
+            placement: "top",
+            closeDelay: 0
+            }}
+            symbol = {
+              <EnvelopeIcon className="h-4 w-4" />
+            }
+            // Run toaster onCopy
+            onCopy = {() => {
+              toast.message('Correo Electronico copiado', {
+                description: 'Prueba a mandarme uno 😉',
+              })
+            }}
+            >
+            me@santiago-lara.dev
+          </Snippet>
+        </CardBody>
+      </Card>
+    </div>
+    </div>
+  );
 }
