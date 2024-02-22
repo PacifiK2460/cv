@@ -16,7 +16,7 @@ import { Toaster, toast } from 'sonner'
 
 export default function Home() {
   return (
-    <div class="h-full">
+    <div classname="h-full">
       <Toaster position="bottom-right"/>
       <div className="grid h-full place-items-center">
       <Card
