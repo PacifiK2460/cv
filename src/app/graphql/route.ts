@@ -1,3 +1,4 @@
+export const runtime = 'edge';
 import "reflect-metadata";
 
 import { ApolloServer } from "@apollo/server";
