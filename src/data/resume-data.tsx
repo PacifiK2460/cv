@@ -18,8 +18,9 @@ import {
   YearProgressLogo,
 } from "@/images/logos";
 import { GitHubIcon, LinkedInIcon, XIcon } from "@/components/icons";
+import { cache } from "react";
 
-export const RESUME_DATA = {
+const _RESUME_DATA = {
   name: "Santiago de la cruz Martinez Lara",
   initials: "SL",
   location: "San Luis Potosí, México",
@@ -93,27 +94,41 @@ export const RESUME_DATA = {
       ],
       description:
         "The oficial site for the Carrocerías Plus Business",
-      // logo: ParabolLogo,
-      link: {
-        // label: "github.com",
-        href: "https://carroceriasplus.com.mx/",
-      },
+      link: "https://carroceriasplus.com.mx/",
+      repo: undefined
     },
-    {
-      title: "The Hype Company (Demo Site)",
-      techStack: [
-        "Full Stack Developer",
-        "TypeScript",
-        "React",
-        "Node.js",
-      ],
-      description:
-        "A demo store for a StreetWear Company: The Hype Company",
-      // logo: ParabolLogo,
-      link: {
-        label: "github.com",
-        href: "https://streetwear.santiago-lara.dev/",
-      },
-    },
+    // {
+    //   title: "The Hype Company (Demo Site)",
+    //   techStack: [
+    //     "Full Stack Developer",
+    //     "TypeScript",
+    //     "React",
+    //     "Node.js",
+    //   ],
+    //   description:
+    //     "A demo store for a StreetWear Company: The Hype Company",
+    //   link: "https://streetwear.santiago-lara.dev/",
+    //   repo: "https://streetwear.santiago-lara.dev/"
+    // },
   ],
-} as const;
+};
+
+// Define Projects type
+export type ResumeData = typeof _RESUME_DATA.projects[0];
+
+const user_repos = await fetch("https://api.github.com/users/PacifiK2460/repos", {
+  cache: "no-cache",
+});
+const user_repos_json = await user_repos.json();
+const user_repos_with_cv_in_topics = user_repos_json.filter((repo: any) => repo.topics.includes("cv"));
+const repos: ResumeData[] = user_repos_with_cv_in_topics.map((repo: any) => ({
+  title: repo.name,
+  techStack: repo.topics,
+  description: repo.description,
+  link: repo.homepage,
+  repo: repo.html_url,
+}));
+
+_RESUME_DATA.projects.push(...repos);
+
+export const RESUME_DATA = _RESUME_DATA;
