@@ -88,7 +88,6 @@ export default function Page() {
               ) : null}
             </div>
           </div>
-
           <Avatar className="size-28">
             <AvatarImage alt={RESUME_DATA.name} src={RESUME_DATA.avatarUrl} />
             <AvatarFallback>{RESUME_DATA.initials}</AvatarFallback>
@@ -101,6 +100,19 @@ export default function Page() {
           </p>
         </Section>
         <Section>
+          <h2 className="text-xl font-bold">Skills</h2>
+          <div className="flex flex-wrap gap-1">
+            {RESUME_DATA.skills.map((skill) => {
+              return (
+                <Badge className="print:text-[10px]" key={skill}>
+                  {skill}
+                </Badge>
+              );
+            })}
+          </div>
+        </Section>
+
+        <Section>
           <h2 className="text-xl font-bold">Competitions</h2>
           <div className="flex flex-wrap gap-1">
             {RESUME_DATA.competitions.map((skill) => {
@@ -112,6 +124,7 @@ export default function Page() {
             })}
           </div>
         </Section>
+
         <Section>
           <h2 className="text-xl font-bold">Work Experience</h2>
           {RESUME_DATA.work.map((work) => {
@@ -174,18 +187,6 @@ export default function Page() {
             );
           })}
         </Section>
-        <Section>
-          <h2 className="text-xl font-bold">Skills</h2>
-          <div className="flex flex-wrap gap-1">
-            {RESUME_DATA.skills.map((skill) => {
-              return (
-                <Badge className="print:text-[10px]" key={skill}>
-                  {skill}
-                </Badge>
-              );
-            })}
-          </div>
-        </Section>
 
         <Section className="print-force-new-page scroll-mb-16">
           <h2 className="text-xl font-bold">Projects</h2>
@@ -205,7 +206,7 @@ export default function Page() {
           </div>
         </Section>
         <div className="w-full flex items-center justify-center print:hidden">
-          <Donut 
+          <Donut
             frameInterval={32}
             scaleX={2}
           />

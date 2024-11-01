@@ -26,15 +26,15 @@ const _RESUME_DATA = {
   location: "San Luis Potosí, México",
   locationLink: "https://www.google.com/maps/place/san-luis-potosi",
   about: {
-    en: "Retired competitive programmer. Full Stack Developer. Keen on attention to details.",
-    es: "Programador competitivo retirado. Desarrollador Full Stack. Detallista.",
+    en: "Retired competitive programmer. Software Engineer, Full Stack Developer. Keen on attention to details.",
+    es: "Programador competitivo retirado. Ingeniero de Software, Desarrollador Full Stack. Detallista.",
   },
 
   summary: {
     en:
-      "Experienced in Linux, NextJS (Typescript), Python, C, and I am always eager to learn new skills and explore new domains. I love to solve problems and help others with my coding abilities, which helps me ensure the quality and accuracy of my work. I am looking for opportunities to collaborate with other passionate developers and create innovative and impactful solutions.",
+      "Experienced in Java, Linux, NextJS (Typescript), Python, C/C++, and I am always eager to learn new skills and explore new domains. I love to solve problems and help others with my coding abilities, which helps me ensure the quality and accuracy of my work. I am looking for opportunities to collaborate with other passionate developers and create innovative and impactful solutions.",
     es:
-      "Experiencia en Linux, NextJS (Typescript), Python, C, y siempre estoy ansioso por aprender nuevas habilidades y explorar nuevos dominios. Me encanta resolver problemas y ayudar a otros con mis habilidades de codificación, lo que me ayuda a garantizar la calidad y precisión de mi trabajo. Estoy buscando oportunidades para colaborar con otros desarrolladores apasionados y crear soluciones innovadoras e impactantes.",
+      "Experiencia en Java, Linux, NextJS (Typescript), Python, C/C++, y siempre estoy ansioso por aprender nuevas habilidades y explorar nuevos dominios. Me encanta resolver problemas y ayudar a otros con mis habilidades de codificación, lo que me ayuda a garantizar la calidad y precisión de mi trabajo. Estoy buscando oportunidades para colaborar con otros desarrolladores apasionados y crear soluciones innovadoras e impactantes.",
   },
   avatarUrl: "https://avatars.githubusercontent.com/u/42554588?v=4",
   personalWebsiteUrl: "https://santiago-lara.dev",
@@ -88,17 +88,17 @@ const _RESUME_DATA = {
       badges: [],
       title: "Information Technology Support Engineer",
       logo: ConsultlyLogo,
-      start: "2022",
-      end: null,
+      start: "2018",
+      end: "2022",
       description:
         "Leading the development of the web site, critical business servers & services. Technologies: React, TypeScript, Node.js",
     },
   ],
   skills: [
+    "Java",
     "TypeScript",
     "React/Next.js",
-    "Node.js",
-    "C/C++"
+    "C/C++", "Python", "Linux", "Software Developer", "English", "Spanish",
   ],
   projects: [
     {
