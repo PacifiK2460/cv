@@ -4,10 +4,12 @@ import {
   CardContent,
   CardDescription,
   CardTitle,
+  CardFooter,
 } from "./ui/card";
 import { Badge } from "./ui/badge";
 
 import { GitHubLogoIcon } from '@radix-ui/react-icons'
+import Link from "next/link";
 
 interface Props {
   title: string;
@@ -70,6 +72,21 @@ export function ProjectCard({ title, description, tags, link, repo }: Props) {
           )
         }
       </CardContent>
+      <CardFooter className="flex-col gap-2 align-middle content-start flex-wrap text-wrap hidden print:flex">
+        {
+          repo ? (
+            <p className="text-[9px] flex-wrap text-wrap">Repo: {repo}</p>
+          ) : (
+            null
+          )
+        }
+        {link ? (
+          <p className="text-[9px] flex-wrap text-wrap">URL: {link}</p>
+        ) : (
+          null
+        )}
+
+      </CardFooter>
     </Card>
   );
 }

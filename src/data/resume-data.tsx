@@ -19,6 +19,10 @@ import {
 } from "@/images/logos";
 import { GitHubIcon, LinkedInIcon, XIcon } from "@/components/icons";
 import { cache } from "react";
+import { CibCisco } from "@/components/icons/cisco";
+import { title } from "process";
+import { LightningBoltIcon } from "@radix-ui/react-icons";
+import { LogosMicrosoftIcon } from "@/components/icons/microsoft";
 
 const _RESUME_DATA = {
   name: "Santiago de la cruz Martinez Lara",
@@ -128,6 +132,85 @@ const _RESUME_DATA = {
     //   repo: "https://streetwear.santiago-lara.dev/"
     // },
   ],
+  certifications: [
+    {
+      title: "introduction to Data Science",
+      issuer: "Cisco",
+      issuerIcon: CibCisco,
+      issueDate: "October 13, 2023",
+      credentialURL: "https://www.credly.com/badges/714afb20-ff7b-4abd-8dc7-f3bd265e1a95/linked_in_profile",
+    },
+    {
+      title: "Cisco Certified Support Technician Cybersecurity [CCST Cybersecurity]",
+      issuer: "Cisco",
+      issuerIcon: CibCisco,
+      issueDate: "April 19, 2023",
+      credentialURL: "https://www.credly.com/badges/5f7cf963-35cf-4884-965e-4584c263ec20/linked_in_profile",
+    },
+    {
+      title: "Cyber Threat Management",
+      issuer: "Cisco",
+      issuerIcon: CibCisco,
+      issueDate: "January 09, 2023",
+      credentialURL: "https://www.credly.com/badges/f5f5ebb3-5672-4245-92b6-e6364e822cf7/linked_in_profile"
+    },
+    {
+      title: "IT Specialist - Cybersecurity",
+      issuer: "Certiport",
+      issuerIcon: LightningBoltIcon,
+      issueDate: "January 20, 2023",
+      credentialURL: "https://www.credly.com/badges/beca4002-b9be-4bc3-aa48-1dcb90116910/linked_in_profile"
+    },
+    {
+      title: "Network Defense",
+      issuer: "Cisco",
+      issuerIcon: CibCisco,
+      issueDate: "December 18, 2022",
+      credentialURL: "https://www.credly.com/badges/729ff8b7-4a8f-4d87-9671-7a5a83a9a603/linked_in_profile"
+    },
+    {
+      title: "Endpoint Security",
+      issuer: "Cisco",
+      issuerIcon: CibCisco,
+      issueDate: "November 06, 2022",
+      credentialURL: "https://www.credly.com/badges/7948a946-4542-422e-bfa0-36859ead44c2/linked_in_profile"
+    },
+    {
+      title: "Networking Basics",
+      issuer: "Cisco",
+      issuerIcon: CibCisco,
+      issueDate: "September 30, 2022",
+      credentialURL: "https://www.credly.com/badges/1bdeee86-d75a-4bf0-8db9-7a2ca227a314/linked_in_profile"
+    },
+    {
+      title: "Microsoft Office Specialist: Associate (Office 2019)",
+      issuer: "Microsoft",
+      issuerIcon: LogosMicrosoftIcon,
+      issueDate: "November 19, 2021",
+      credentialURL: "https://www.credly.com/badges/61f9ef22-8486-40b1-a295-f83edf79aaf0/linked_in_profile"
+    },
+    {
+      title: "Microsoft Office Specialist: Excel Associate (Office 2019)",
+      issuer: "Microsoft",
+      issuerIcon: LogosMicrosoftIcon,
+      issueDate: "November 19, 2021",
+      credentialURL: "https://www.credly.com/badges/9fab7720-e11e-4e87-980a-d74f1bd4dedf/linked_in_profile"
+    },
+    {
+      title: "Microsoft Office Specialist: Word Associate (Office 2019)",
+      issuer: "Microsoft",
+      issuerIcon: LogosMicrosoftIcon,
+      issueDate: "October 15, 2021",
+      credentialURL: "https://www.credly.com/badges/16a1d92d-2436-447d-9cbb-b3d931af2d27/linked_in_profile"
+    },
+    {
+      title: "Microsoft Office Specialist: PowerPoint Associate (Office 2019)",
+      issuer: "Microsoft",
+      issuerIcon: LogosMicrosoftIcon,
+      issueDate: "September 24, 2021",
+      credentialURL: "https://www.credly.com/badges/cc61d3b6-b2c3-4de3-9799-6f25bbcdeff6/linked_in_profile"
+    }
+  ]
 };
 
 // Define Projects type

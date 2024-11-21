@@ -1,15 +1,17 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CommandMenu } from "@/components/command-menu";
 import { Metadata } from "next";
 import { Section } from "@/components/ui/section";
-import { GlobeIcon, MailIcon, PhoneIcon } from "lucide-react";
+import { ExternalLink, GlobeIcon, LinkIcon, MailIcon, PhoneIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { RESUME_DATA } from "@/data/resume-data";
 import { ProjectCard } from "@/components/project-card";
+import Link from 'next/link'
 
 import Donut from "@/components/donut";
+import { CibCisco } from "@/components/icons/cisco";
 
 export const metadata: Metadata = {
   title: `${RESUME_DATA.name} | ${RESUME_DATA.about}`,
@@ -77,17 +79,17 @@ export default function Page() {
             </div>
             <div className="hidden flex-col gap-x-1 font-mono text-sm text-muted-foreground print:flex print:text-[12px]">
               {RESUME_DATA.contact.email ? (
-                <a href={`mailto:${RESUME_DATA.contact.email}`}>
+                <a href={`mailto:${RESUME_DATA.contact.email}`} key={RESUME_DATA.contact.email}>
                   <span className="underline">{RESUME_DATA.contact.email}</span>
                 </a>
               ) : null}
               {RESUME_DATA.contact.tel ? (
-                <a href={`tel:${RESUME_DATA.contact.tel}`}>
+                <a href={`tel:${RESUME_DATA.contact.tel}`} key={RESUME_DATA.contact.tel}>
                   <span className="underline">{RESUME_DATA.contact.tel}</span>
                 </a>
               ) : null}
               {RESUME_DATA.contact.social.map((social) => (
-                <a href={`${social.url}`}>
+                <a href={`${social.url}`} key={social.url}>
                   <span className="underline">{social.url}</span>
                 </a>
               ))}
@@ -127,6 +129,43 @@ export default function Page() {
                 </Badge>
               );
             })}
+          </div>
+        </Section>
+
+        <Section>
+          <h2 className="text-xl font-bold">Certifications</h2>
+          <div className="flex flex-wrap gap-1">
+            {
+              RESUME_DATA.certifications.map((cert) => {
+                return (
+                  <>
+                    <Card className="gap-2 flex flex-row overflow-hidden border border-muted p-3 cursor-pointer hover:bg-gray-100 h-full w-full" key={cert.title}>
+                      <CardContent className="flex flex-row gap-2 text-xs print:text-[10px] h-full w-full" key={cert.title}>
+                        <div className="flex-none place-self-center h-full" key={cert.title}>
+                          <cert.issuerIcon className="w-10 h-10" key={cert.title} />
+                        </div>
+                        <div className="grow flex flex-col" key={cert.title}>
+                          <CardTitle className="text-lg font-bold text-black flex flex-row gap-2 align-middle items-center" key={cert.title}>
+                            <Link href={cert.credentialURL} key={cert.title} className="h-full w-full" prefetch target="_blank">
+                              {cert.title}
+                            </Link>
+                          </CardTitle>
+                          <div key={cert.title}>
+                            <p key={cert.title}>{cert.issuer}</p>
+                            <p key={cert.title}>Issued: {cert.issueDate}</p>
+                            <Link href={cert.credentialURL} className="hidden print:block">URL: {cert.credentialURL}</Link>
+                          </div>
+                        </div>
+                        <div className="flex-none place-self-center h-full print:hidden">
+                          <LinkIcon className="size-4" />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </>
+
+                )
+              })
+            }
           </div>
         </Section>
 
