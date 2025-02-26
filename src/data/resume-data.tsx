@@ -96,6 +96,16 @@ const _RESUME_DATA = {
       end: "2022",
       description:
         "Leading the development of the web site, critical business servers & services. Technologies: React, TypeScript, Node.js",
+    }, {
+      company: "ABB Technologies",
+      link: "https://new.abb.com/mx",
+      badges: [],
+      title: "Information System Continuous Improvement Engineer",
+      logo: ConsultlyLogo,
+      start: "2025",
+      end: "Present",
+      description:
+        "Leading the development of critical businessservices. Technologies: Microsoft Power Plataform, Git, React",
     },
   ],
   skills: [
