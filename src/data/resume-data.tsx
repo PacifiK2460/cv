@@ -226,18 +226,47 @@ const _RESUME_DATA = {
 // Define Projects type
 export type ResumeData = typeof _RESUME_DATA.projects[0];
 
-const user_repos = await fetch("https://api.github.com/users/PacifiK2460/repos", {
-  cache: "no-cache",
-});
-const user_repos_json = await user_repos.json();
-const user_repos_with_cv_in_topics = user_repos_json.filter((repo: any) => repo.topics.includes("cv"));
+
+async function fetchAllRepos(username: string): Promise<any[]> {
+  const allRepos: any[] = [];
+  let page = 1;
+
+  while (true) {
+    const res = await fetch(
+      `https://api.github.com/users/${username}/repos?per_page=100&page=${page}`,
+      { cache: "no-cache" }
+    );
+
+    if (!res.ok) {
+      throw new Error(`GitHub API error ${res.status}: ${await res.text()}`);
+    }
+
+    const reposPage = await res.json();
+
+    // Stop when the returned array is empty
+    if (!Array.isArray(reposPage) || reposPage.length === 0) break;
+
+    allRepos.push(...reposPage);
+    page++;
+  }
+
+  return allRepos;
+}
+
+const user_repos_json = await fetchAllRepos("PacifiK2460");
+
+const user_repos_with_cv_in_topics = user_repos_json.filter(
+  (repo: any) => Array.isArray(repo.topics) && repo.topics.includes("cv")
+);
+
 const repos: ResumeData[] = user_repos_with_cv_in_topics.map((repo: any) => ({
   title: repo.name,
-  techStack: repo.topics,
+  techStack: repo.topics ?? [],
   description: repo.description,
   link: repo.homepage,
   repo: repo.html_url,
 }));
+
 
 _RESUME_DATA.projects.push(...repos);
 
