@@ -253,21 +253,30 @@ async function fetchAllRepos(username: string): Promise<any[]> {
   return allRepos;
 }
 
-const user_repos_json = await fetchAllRepos("PacifiK2460");
+// Export async function to fetch resume data with fresh GitHub repos
+export async function getResumeData() {
+  const user_repos_json = await fetchAllRepos("PacifiK2460");
 
-const user_repos_with_cv_in_topics = user_repos_json.filter(
-  (repo: any) => Array.isArray(repo.topics) && repo.topics.includes("cv")
-);
+  const user_repos_with_cv_in_topics = user_repos_json.filter(
+    (repo: any) => Array.isArray(repo.topics) && repo.topics.includes("cv")
+  );
 
-const repos: ResumeData[] = user_repos_with_cv_in_topics.map((repo: any) => ({
-  title: repo.name,
-  techStack: repo.topics ?? [],
-  description: repo.description,
-  link: repo.homepage,
-  repo: repo.html_url,
-}));
+  const repos: ResumeData[] = user_repos_with_cv_in_topics.map((repo: any) => ({
+    title: repo.name,
+    techStack: repo.topics ?? [],
+    description: repo.description,
+    link: repo.homepage,
+    repo: repo.html_url,
+  }));
 
+  // Create a copy to avoid mutating the original
+  const resumeData = {
+    ..._RESUME_DATA,
+    projects: [..._RESUME_DATA.projects, ...repos]
+  };
 
-_RESUME_DATA.projects.push(...repos);
+  return resumeData;
+}
 
+// Export static data for backwards compatibility and metadata
 export const RESUME_DATA = _RESUME_DATA;
